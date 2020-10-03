@@ -1,11 +1,12 @@
-#include <cassert>
-#include <iostream>
 #include <string>
 
 #include "my_tuple.h"
 #include "my_objects.h"
 
-int main() {
+#include "gtest/gtest.h"
+
+TEST(my_tuple, tests) {
+    std::cerr << 123;
     using Int3 = my::tuple<int, int, int>;
     static_assert(Int3::size() == 3, "");
     constexpr Int3 nums{1, 2, 1};
@@ -21,7 +22,6 @@ int main() {
 
     using Str2 = my::tuple<std::string, std::string>;
     static_assert(Str2::size() == 2, "");
-
 
     using Object2 = my::tuple<my::Ball, my::Desk>;
     static_assert(Object2::size() == 2, "");

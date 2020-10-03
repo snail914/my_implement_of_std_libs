@@ -1,6 +1,10 @@
 # my impl of std libs (meta-programming)
 better understand std classes by implementing my versions of c++ std libs
 
+```bash
+mkdir build&&cmake -B build&&make -j -C build&&./build/test_my_libs
+```
+
 ### `my::any` (vs `std::any`)
 #### solution
 using function pointer to store the descructor of provided template type
