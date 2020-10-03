@@ -1,7 +1,11 @@
-# my impl of std libs (meta-programming)
+# my impl of std libs
 better understand std classes by implementing my versions of c++ std libs
 
+### tags
+meta-programming, std, googletest
+
 ```bash
+# using google test framework
 mkdir build&&cmake -B build&&make -j -C build&&./build/test_my_libs
 ```
 
