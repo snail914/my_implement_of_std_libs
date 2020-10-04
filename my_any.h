@@ -8,18 +8,19 @@ class any {
     // CONSTRUCTORS
     any();
 
-    template <typename T>
+    template <typename T, typename U=std::enable_if_t<!std::is_same<std::remove_reference_t<T>, any>::value, void>>
     any(T&&);
 
-    any(any&&) = delete;
-    any(const any&) = delete;
+    any(any&&);
+
+    any(const any&);
 
     // MODIFIERS
     template <typename T>
     any& operator=(T&&);
 
-    any& operator=(any&&) = delete;
-    any& operator=(const any&) = delete;
+    any& operator=(any&&);
+    any& operator=(const any&);
 
     template <typename T, typename... Args>
     T& emplace(Args&&... args);
@@ -39,42 +40,45 @@ class any {
     template <typename T>
     static void release(void* ptr);
 
+    template <typename T>
+    static void* copy(void* ptr);
+
+    void reset();
+
     void* d_item_p;
 
     void(*d_deleter_p)(void*);
+
+    void*(*d_copier_p)(void*);
 };
 
-
-
-
-template <typename T>
+template <typename T, typename>
 any::any(T&& val)
 : d_item_p {static_cast<void*>(new T{std::forward<T>(val)})}
 , d_deleter_p {&release<T>}
+, d_copier_p {&copy<T>}
 {
 }
 
 template <typename T>
 any& any::operator=(T&& val) {
     const auto val_p = new T {std::forward<T>(val)};
-    if (d_deleter_p) {
-        // release the previously held item
-        d_deleter_p(d_item_p);
-    }
+    // release the previously held item
+    reset();
     d_item_p = static_cast<void*>(val_p);
     d_deleter_p = &release<T>;
+    d_copier_p = &copy<T>;
     return *this;
 }
 
 template <typename T, typename... Args>
 T& any::emplace(Args&&... args) {
     const auto val_p = new T {std::forward<Args>(args)...};
-    if (d_deleter_p) {
-        // release the previously held item
-        d_deleter_p(d_item_p);
-    }
+    // release the previously held item
+    reset();
     d_item_p = static_cast<void*>(val_p);
     d_deleter_p = &release<T>;
+    d_copier_p = &copy<T>;
     return *static_cast<T*>(d_item_p);
 }
 
@@ -99,4 +103,13 @@ void any::release(void* ptr) {
     }
 }
 
-} // close namesapce my
+template <typename T>
+void* any::copy(void* ptr) {
+    T* val_p = nullptr;
+    if (ptr) {
+        val_p = new T{*static_cast<T*>(ptr)};
+    }
+    return static_cast<void*>(val_p);
+}
+
+} // close namespace my
