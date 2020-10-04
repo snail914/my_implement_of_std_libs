@@ -11,7 +11,7 @@ mkdir build&&cmake -B build&&make -j -C build&&./build/test_my_libs
 
 ### `my::any` (vs `std::any`)
 #### solution
-using function pointer to store the descructor of provided template type
+using function pointer to store the destructor of provided template type
 #### example
 ```c++
 my::any a;
@@ -29,3 +29,15 @@ using DoubleInt = my::tuple<double, int>;
 static_assert(DoubleInt::size() == 2, "");
 static_assert(my::get<0>(DoubleInt(2.4, 50)) == 2.4, "");
 ```
+
+### `my::function` (vs `std::function`)
+#### solution
+using inheritance to store the functor of provided template type. similar
+concept as `my::any`
+#### example
+```c++
+using F = my::function<bool(const int&, const int&)>;
+F f {std::less<int>()};
+EXPECT_EQ(f(10, 20), true);
+```
+
