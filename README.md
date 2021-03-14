@@ -12,7 +12,7 @@ animal.speak(); // cat speaks;
 animal = Dog();
 animal.speak(); // dog speaks;
 
-std::vector<Animal> animals{Cat{}, Dog{}, Rabbit()};
+std::vector<Animal> animals{Cat{}, Dog{}, Rabbit{}};
 ```
 
 ### `my::any` (vs `std::any`)
