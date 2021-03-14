@@ -9,10 +9,11 @@ about dynamic polymorphism with code injection and metaclasses.
 Animal animal = Cat();
 animal.speak(); // cat speaks;
 
-animal = Dog();
-animal.speak(); // dog speaks;
-
 std::vector<Animal> animals{Cat{}, Dog{}, Rabbit{}};
+for (const auto& a : animals)
+{
+  animals.speak();
+}
 ```
 
 ### `my::any` (vs `std::any`)
