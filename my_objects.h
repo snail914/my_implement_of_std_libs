@@ -3,18 +3,18 @@
 
 namespace my {
 
-struct Ball {
-    Ball() {
-        std::cout << "'Ball' default constructed" << std::endl;
+struct Chair {
+    Chair() {
+        std::cout << "'Chair' default constructed" << std::endl;
     }
-    Ball(const Ball&) {
-        std::cout << "'Ball' copy constructed" << std::endl;
+    Chair(const Chair&) {
+        std::cout << "'Chair' copy constructed" << std::endl;
     }
-    Ball(Ball&&) {
-        std::cout << "'Ball' move constructed" << std::endl;
+    Chair(Chair&&) {
+        std::cout << "'Chair' move constructed" << std::endl;
     }
-    ~Ball() {
-        std::cout << "'Ball' destructed" << std::endl;
+    ~Chair() {
+        std::cout << "'Chair' destructed" << std::endl;
     }
 };
 

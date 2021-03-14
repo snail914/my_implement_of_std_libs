@@ -10,8 +10,8 @@ TEST(my_vector, tests) {
     my::vector<int> b{2};
     EXPECT_EQ(b.size(), 2);
 
-    my::vector<my::Ball> c;
-    my::vector<my::Ball> d{2};
+    my::vector<my::Chair> c;
+    my::vector<my::Chair> d{2};
     d.reserve(4);
     EXPECT_EQ(d.size(), 2);
     d.clear();

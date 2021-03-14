@@ -23,7 +23,7 @@ TEST(my_tuple, tests) {
     using Str2 = my::tuple<std::string, std::string>;
     static_assert(Str2::size() == 2, "");
 
-    using Object2 = my::tuple<my::Ball, my::Desk>;
+    using Object2 = my::tuple<my::Chair, my::Desk>;
     static_assert(Object2::size() == 2, "");
     Object2 o2{{}, {2, 3}};
     assert((my::get<1>(o2) == my::Desk{2, 3}));

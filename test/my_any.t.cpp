@@ -8,12 +8,12 @@ TEST(my_any, tests) {
     my::any a;
     EXPECT_FALSE(a.has_value());
 
-    a.emplace<my::Ball>();
+    a.emplace<my::Chair>();
     EXPECT_TRUE(a.has_value());
 
     my::any b{123};
 
-    my::any c{my::Ball()};
+    my::any c{my::Chair()};
     const auto& item = c.emplace<my::Desk>(1, 2);
     EXPECT_EQ(item, my::Desk(1, 2));
     EXPECT_EQ(c.get<my::Desk>(), my::Desk(1, 2));
