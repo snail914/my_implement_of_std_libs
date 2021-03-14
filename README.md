@@ -1,8 +1,4 @@
 # my impl of std libs
-better understand std classes by implementing my versions of c++ std libs
-
-### tags
-meta-programming, std, googletest
 
 ### `my::vtable` (vs `virtual`)
 #### solution
