@@ -3,7 +3,7 @@
 ### `my::vtable` (vs c++ `virtual`)
 #### solution
 Re-implementation of `Sy Brand(twitter@TartanLlama)`'s excellent ACCU 2021 talk
-about `dynamic polymorphism` and code injection(reflection).
+about dynamic polymorphism with code injection and metaclasses.
 #### example
 ```c++
 Animal animal = Cat();
