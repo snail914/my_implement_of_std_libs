@@ -1,9 +1,9 @@
 # my impl of std libs
 
-### `my::vtable` (vs `virtual`)
+### `my::vtable` (vs c++ `virtual`)
 #### solution
 Re-implementation of `Sy Brand(twitter@TartanLlama)`'s excellent ACCU 2021 talk
-about `dynamic polymorphism` and code injection(reflection).
+about dynamic polymorphism with code injection and metaclasses.
 #### example
 ```c++
 Animal animal = Cat();
@@ -12,7 +12,7 @@ animal.speak(); // cat speaks;
 animal = Dog();
 animal.speak(); // dog speaks;
 
-std::vector<Animal> animals{Cat{}, Dog{}, Rabbit()};
+std::vector<Animal> animals{Cat{}, Dog{}, Rabbit{}};
 ```
 
 ### `my::any` (vs `std::any`)
