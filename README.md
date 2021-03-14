@@ -4,6 +4,20 @@ better understand std classes by implementing my versions of c++ std libs
 ### tags
 meta-programming, std, googletest
 
+### `my::vtable` (vs `virtual`)
+#### solution
+Re-implementation of `Sy Brand(twitter@TartanLlama)'s excellent ACCU 2021 talk
+about `dynamic polymorphism` and code injection(reflection).
+#### example
+```c++
+Animal animal = Cat();
+animal.speak(); // cat speaks;
+
+animal = Dog();
+animal.speak(); // dog speaks;
+
+std::vector<Animal> animals{Cat{}, Dog{}, Rabbit()};
+```
 
 ### `my::any` (vs `std::any`)
 #### solution
@@ -35,20 +49,5 @@ concept as `my::any`
 using F = my::function<bool(const int&, const int&)>;
 F f {std::less<int>()};
 EXPECT_EQ(f(10, 20), true);
-```
-
-### `my::vtable` (vs `virtual`)
-#### solution
-Re-implementation of `Sy Brand(twitter@TartanLlama)'s excellent ACCU 2021 talk
-about `dynamic polymorphism` and code injection(reflection).
-#### example
-```c++
-Animal animal = Cat();
-animal.speak(); // cat speaks;
-
-animal = Dog();
-animal.speak(); // dog speaks;
-
-std::vector<Animal> animals{Cat{}, Dog{}, Rabbit()};
 ```
 
