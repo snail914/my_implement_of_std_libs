@@ -1,6 +1,6 @@
 # my impl of std libs
 
-### `my::vtable` (vs `virtual`)
+### `my::vtable` (vs c++ `virtual`)
 #### solution
 Re-implementation of `Sy Brand(twitter@TartanLlama)`'s excellent ACCU 2021 talk
 about `dynamic polymorphism` and code injection(reflection).
