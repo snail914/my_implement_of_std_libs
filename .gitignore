@@ -1,1 +1,11 @@
 build
+*swp
+CMake*
+googletest*
+CTestTestfile.cmake
+Makefile
+Testing/
+cmake_install.cmake
+lib/
+test_my_libs
+
