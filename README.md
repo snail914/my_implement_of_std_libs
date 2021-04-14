@@ -10,7 +10,7 @@ Animal animal = Cat();
 animal.speak(); // cat speaks;
 
 std::vector<Animal> animals{Cat{}, Dog{}, Rabbit{}};
-for (const auto& a : animals) {  animals.speak(); }
+for (const auto& a : animals) {  a.speak(); }
 ```
 
 ### `my::any` (vs `std::any`)
